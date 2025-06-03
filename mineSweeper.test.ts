@@ -70,4 +70,8 @@ Deno.test("MineSweeper test 4 : mine entoure de cases vides", () => {
   assertEquals(minesweeper(input), expected);
 });
 
-
+Deno.test("MineSweeper test 5: grille 2x2 simple", () => {
+  const input = "..\n..";
+  const expected = "00\n00";
+  assertEquals(minesweeper(input), expected);
+});
