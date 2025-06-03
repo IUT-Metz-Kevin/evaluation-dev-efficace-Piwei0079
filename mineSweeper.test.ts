@@ -9,8 +9,17 @@ function minesweeper(input : String): string{
        result +="*";
     }
     else{
-        result +="0";
-        
+        // case vide devient 1
+        let countMine = 0;
+        // ici mine a gauche
+        if(i>0 && input[i-1] === "*"){
+            countMine++;
+        }
+        else{
+            result +="0";
+        }
+
+        result +=countMine.toString();
         
    
        
