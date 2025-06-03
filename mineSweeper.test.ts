@@ -10,7 +10,12 @@ function minesweeper(input : String): string{
     }
     else{
         result +="0";
+        
+        
+   
+       
     }
+    
 
  }
     
@@ -39,6 +44,13 @@ Deno.test("MineSweeper test 3: deux cases vides côte à côte 00", () => {
 Deno.test("MineSweeper test 4 : case vide a cote d'une mine devient 1",()=>{
     const input = ".*";
     const expected ="1*";
+    assertEquals(minesweeper(input), expected);
+
+});
+
+Deno.test("MineSweeper test 4 : case vide a gauche d'une mine devient 1",()=>{
+    const input ="*.";
+    const expected = "*1";
     assertEquals(minesweeper(input), expected);
 
 });
