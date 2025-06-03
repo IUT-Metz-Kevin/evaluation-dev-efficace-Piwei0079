@@ -1,41 +1,32 @@
 import { assertEquals } from "jsr:@std/assert";
 
+function minesweeper(input: String): string {
+  let result = "";
 
-function minesweeper(input : String): string{
- let result = "";
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "*") {
+      result += "*";
+    } else {
+      // compte le nombre de mine si gauche ou droite d'une case vide
+      let countMine = 0;
+      // ici mine a gauche
+      if (i > 0 && input[i - 1] === "*") {
+        countMine++;
+      }
+      // ici mine a droite
+      if (i < input.length - 1 && input[i + 1] === "*") {
+        countMine++;
+      }
+      // else{
+      //     result +="0";
+      // }
 
- for(let i=0;i<input.length;i++){
-    if (input[i] === "*"){
-       result +="*";
+      result += countMine.toString();
     }
-    else{
-        // compte le nombre de mine si gauche ou droite d'une case vide
-        let countMine = 0;
-        // ici mine a gauche
-        if(i>0 && input[i-1] === "*"){
-            countMine++;
-        }
-        // ici mine a droite
-        if(i<input.length -1 && input[i+1] === "*"){
-            countMine++;
+  }
 
-        }
-        // else{
-        //     result +="0";
-        // }
-
-        result +=countMine.toString();
-        
-   
-       
-    }
-    
-
- }
-    
-    return result;
+  return result;
 }
-
 
 Deno.test("MineSweeper test 1: une seule case vide", () => {
   const input = ".";
@@ -43,10 +34,10 @@ Deno.test("MineSweeper test 1: une seule case vide", () => {
   assertEquals(minesweeper(input), expected);
 });
 
-Deno.test("MineSweeper test 2: une case * ", ()=>{
-    const input = "*";
-    const expected = "*";
-    assertEquals(minesweeper(input), expected)
+Deno.test("MineSweeper test 2: une case * ", () => {
+  const input = "*";
+  const expected = "*";
+  assertEquals(minesweeper(input), expected);
 });
 
 Deno.test("MineSweeper test 3: deux cases vides côte à côte 00", () => {
@@ -55,24 +46,28 @@ Deno.test("MineSweeper test 3: deux cases vides côte à côte 00", () => {
   assertEquals(minesweeper(input), expected);
 });
 
-Deno.test("MineSweeper test 4 : case vide a droite cote d'une mine devient 1",()=>{
+Deno.test(
+  "MineSweeper test 4 : case vide a droite cote d'une mine devient 1",
+  () => {
     const input = ".*";
-    const expected ="1*";
+    const expected = "1*";
     assertEquals(minesweeper(input), expected);
+  }
+);
 
-});
-
-Deno.test("MineSweeper test 4 : case vide a gauche d'une mine devient 1",()=>{
-    const input ="*.";
+Deno.test(
+  "MineSweeper test 4 : case vide a gauche d'une mine devient 1",
+  () => {
+    const input = "*.";
     const expected = "*1";
     assertEquals(minesweeper(input), expected);
+  }
+);
 
+Deno.test("MineSweeper test 4 : mine entoure de cases vides", () => {
+  const input = ".*.";
+  const expected = "1*1";
+  assertEquals(minesweeper(input), expected);
 });
 
-Deno.test("MineSweeper test 4 : mine entoure de cases vides", ()=>{
-    const input =".*.";
-    const expected = "1*1";
-    assertEquals(minesweeper(input),expected);
-
-});
 
