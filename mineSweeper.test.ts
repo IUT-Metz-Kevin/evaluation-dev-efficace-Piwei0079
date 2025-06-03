@@ -8,9 +8,14 @@ function minesweeper(input : String): string{
 
 
 Deno.test("MineSweeper test 1: une seule case vide", () => {
-// case .
   const input = ".";
   const expected = "0";
   assertEquals(minesweeper(input), expected);
+});
+
+Deno.test("MineSweeper test 2: une case * ", ()=>{
+    const input = "*";
+    const expected = "*";
+    assertEquals(minesweeper(input), expected)
 });
 
