@@ -20,9 +20,9 @@ function minesweeper(input : String): string{
             countMine++;
 
         }
-        else{
-            result +="0";
-        }
+        // else{
+        //     result +="0";
+        // }
 
         result +=countMine.toString();
         
@@ -69,9 +69,9 @@ Deno.test("MineSweeper test 4 : case vide a gauche d'une mine devient 1",()=>{
 
 });
 
-Deno.test("MineSweeper test 4 : mine autour case vide", ()=>{
-    const input ="*.*";
-    const expected = "*1*";
+Deno.test("MineSweeper test 4 : mine entoure de cases vides", ()=>{
+    const input =".*.";
+    const expected = "1*1";
     assertEquals(minesweeper(input),expected);
 
 });
