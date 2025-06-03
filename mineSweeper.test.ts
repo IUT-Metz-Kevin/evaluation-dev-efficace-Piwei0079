@@ -2,11 +2,19 @@ import { assertEquals } from "jsr:@std/assert";
 
 
 function minesweeper(input : String): string{
+ let result = "";
 
-    if (input === "*"){
-        return "*";
+ for(let i=0;i<input.length;i++){
+    if (input[i] === "*"){
+       result +="*";
     }
-    return "0";
+    else{
+        result +="0";
+    }
+
+ }
+    
+    return result;
 }
 
 
