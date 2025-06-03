@@ -17,9 +17,6 @@ function minesweeper(input: String): string {
       if (i < input.length - 1 && input[i + 1] === "*") {
         countMine++;
       }
-      // else{
-      //     result +="0";
-      // }
 
       result += countMine.toString();
     }
