@@ -2,7 +2,10 @@ import { assertEquals } from "jsr:@std/assert";
 
 
 function minesweeper(input : String): string{
-    input = " ";
+
+    if (input === "*"){
+        return "*";
+    }
     return "0";
 }
 
