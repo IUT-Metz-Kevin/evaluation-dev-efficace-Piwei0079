@@ -1,24 +1,43 @@
 import { assertEquals } from "jsr:@std/assert";
 
-function minesweeper(input: String): string {
+function minesweeper(input: string): string {
+  // on split la chaine
+  const lines = input.split("\n");
+  const rows = lines.length;
+  const cols = lines[0].length;
   let result = "";
 
-  for (let i = 0; i < input.length; i++) {
-    if (input[i] === "*") {
-      result += "*";
-    } else {
-      // compte le nombre de mine si gauche ou droite d'une case vide
-      let countMine = 0;
-      // ici mine a gauche
-      if (i > 0 && input[i - 1] === "*") {
-        countMine++;
-      }
-      // ici mine a droite
-      if (i < input.length - 1 && input[i + 1] === "*") {
-        countMine++;
-      }
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (lines[row][col] === "*") {
+        result += "*";
+      } else {
+        let countMine = 0;
 
-      result += countMine.toString();
+        // On vérifie les cases adjacentes
+        for (let caseRow = -1; caseRow <= 1; caseRow++) {
+          for (let caseCol = -1; caseCol <= 1; caseCol++) {
+            if (caseRow === 0 && caseCol === 0) {
+              continue;
+            }
+            
+            const newRow = row + caseRow;
+            const newCol = col + caseCol;
+
+            if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+              if (lines[newRow][newCol] === "*") {
+                countMine++;
+              }
+            }
+          }
+        }
+
+        result += countMine.toString();
+      }
+    }
+
+    if (row < rows - 1) {
+      result += "\n";
     }
   }
 
