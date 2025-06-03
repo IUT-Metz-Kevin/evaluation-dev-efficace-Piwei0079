@@ -15,6 +15,8 @@ function minesweeper(input : String): string{
         if(i>0 && input[i-1] === "*"){
             countMine++;
         }
+        
+        
         else{
             result +="0";
         }
@@ -50,7 +52,7 @@ Deno.test("MineSweeper test 3: deux cases vides côte à côte 00", () => {
   assertEquals(minesweeper(input), expected);
 });
 
-Deno.test("MineSweeper test 4 : case vide a cote d'une mine devient 1",()=>{
+Deno.test("MineSweeper test 4 : case vide a droite cote d'une mine devient 1",()=>{
     const input = ".*";
     const expected ="1*";
     assertEquals(minesweeper(input), expected);
