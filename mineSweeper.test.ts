@@ -9,14 +9,17 @@ function minesweeper(input : String): string{
        result +="*";
     }
     else{
-        // case vide devient 1
+        // compte le nombre de mine si gauche ou droite d'une case vide
         let countMine = 0;
         // ici mine a gauche
         if(i>0 && input[i-1] === "*"){
             countMine++;
         }
-        
-        
+        // ici mine a droite
+        if(i<input.length -1 && input[i+1] === "*"){
+            countMine++;
+
+        }
         else{
             result +="0";
         }
