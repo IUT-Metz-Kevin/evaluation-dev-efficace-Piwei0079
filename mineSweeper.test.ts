@@ -99,24 +99,23 @@ Deno.test("MineSweeper test 6 : grille 2x2 avec une mine", () => {
 });
 
 Deno.test("MineSweeper test 7 : grille 3x6 case vide simple",()=>{
-    const input = ".....\n.....\n.....";
-    const expected = "00000\n00000\n00000";
+    const input = "......\n......\n......";
+    const expected = "000000\n000000\n000000";
+    assertEquals(minesweeper(input),expected);
+
+});
+
+
+Deno.test("MineSweeper test 9: grille 3x6 mines et nombres",()=>{
+    const input = ".*.**.\n....*.\n..*...";
+    const expected ="1*2**2\n1234*2\n01*211";
     assertEquals(minesweeper(input),expected);
 
 });
 
 Deno.test("MineSweeper test 8 : grille 3x6 mines entourees de cases vides",()=>{
-    const input = ".*...\n...*.\n..*..";
-    const expected ="1*111\n111*1\n11*11";
+    const input = ".*....\n...*..\n......*";
+    const expected ="1*1111\n111*11\n11111*";
+    assertEquals(minesweeper(input),expected);
 });
 
-
-// 1*2**2\n1234*2\n01*211
-
-
-
-
-// Deno.test("MineSweeper test 7 : grille ",()=>{
-//     const input = "";
-
-// });
