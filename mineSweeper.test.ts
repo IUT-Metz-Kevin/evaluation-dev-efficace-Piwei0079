@@ -30,9 +30,16 @@ Deno.test("MineSweeper test 2: une case * ", ()=>{
     assertEquals(minesweeper(input), expected)
 });
 
-Deno.test("MineSweeper - deux cases vides côte à côte", () => {
+Deno.test("MineSweeper test 3: deux cases vides côte à côte 00", () => {
   const input = "..";
   const expected = "00";
   assertEquals(minesweeper(input), expected);
+});
+
+Deno.test("MineSweeper test 4 : case vide a cote d'une mine devient 1",()=>{
+    const input = ".*";
+    const expected ="1*";
+    assertEquals(minesweeper(input), expected);
+
 });
 
